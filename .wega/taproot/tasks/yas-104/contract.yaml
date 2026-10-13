@@ -1,0 +1,169 @@
+id: YAS-104
+title: Allow staff to hide and unhide Ratings
+summary: >-
+  Introduce reversible Rating Visibility so administrators can hide abusive feedback
+  without deleting customer-authored content. Hidden Ratings remain available to staff
+  but disappear from Storefront lists, counts, and average star scores on the next load.
+requirements:
+  functional:
+    - id: FR-1
+      description: Persist VISIBLE or HIDDEN Visibility, default new Ratings to VISIBLE, and migrate existing Ratings to VISIBLE.
+      source: [YAS-104 AC-1]
+      priority: must
+    - id: FR-2
+      description: Change Visibility through PUT /backoffice/ratings/{id}/visibility with a validated visibility body and return the updated Rating.
+      source: [YAS-104 AC-2]
+      priority: must
+    - id: FR-3
+      description: Return only VISIBLE Ratings and matching pagination totals and averages from Storefront Rating endpoints; return zero average when none are visible.
+      source: [YAS-104 AC-3]
+      priority: must
+    - id: FR-4
+      description: Return all Ratings with Visibility to Backoffice and replace row Delete with Hide or Unhide and a Hidden badge.
+      source: [YAS-104 AC-4, YAS-104 AC-5]
+      priority: must
+    - id: FR-5
+      description: Retain existing DELETE functionality and mark its Swagger operation deprecated.
+      source: [YAS-104 Out of scope]
+      priority: must
+    - id: FR-6
+      description: Preserve duplicate-submission restrictions even when the Customer's existing Rating is HIDDEN.
+      source: [User decision D-2]
+      priority: must
+  non_functional:
+    - id: NFR-1
+      description: Preserve creation audit fields and usual modification auditing; repeating the same Visibility succeeds without an unnecessary save.
+    - id: NFR-2
+      description: Show moderation effects on the next Storefront product-page load without realtime synchronization.
+  security:
+    - id: SEC-1
+      description: Only authenticated ADMIN may update Rating Visibility; authenticated non-ADMIN roles receive 403.
+acceptance_criteria:
+  - id: AC-1
+    description: New Ratings and pre-migration rows have VISIBLE Visibility and only the two defined values are accepted.
+    validates: [FR-1]
+  - id: AC-2
+    description: ADMIN can hide and unhide, receiving 200 and the updated Rating; nonexistent IDs return 404 and missing, null, or invalid Visibility returns 400.
+    validates: [FR-2, SEC-1]
+  - id: AC-3
+    description: Hidden Ratings are excluded from public page content, totalElements, totalPages, and average; all-hidden products return an empty list and 0.0 average.
+    validates: [FR-3]
+  - id: AC-4
+    description: Backoffice lists visible and hidden Ratings with their Visibility, while row actions toggle it and hidden rows show a Hidden badge.
+    validates: [FR-4]
+  - id: AC-5
+    description: Reloading the Storefront product page after hiding or unhiding reflects the public list, count, and average.
+    validates: [FR-3, NFR-2]
+  - id: AC-6
+    description: Hide and unhide preserve createdOn and creation attribution, use usual modification auditing, and a repeated state does not save again.
+    validates: [NFR-1, FR-2]
+  - id: AC-7
+    description: DELETE remains functional and deprecated in Swagger, but is no longer offered by the Backoffice reviews row.
+    validates: [FR-5, FR-4]
+  - id: AC-8
+    description: A Customer cannot create a replacement Rating for a product after their existing Rating is hidden.
+    validates: [FR-6]
+  - id: AC-9
+    description: Authenticated non-ADMIN requests to change Visibility receive 403 and do not modify persistence.
+    validates: [SEC-1]
+scope:
+  - rating/src/main/java/com/yas/rating/model
+  - rating/src/main/java/com/yas/rating/viewmodel
+  - rating/src/main/java/com/yas/rating/controller/RatingController.java
+  - rating/src/main/java/com/yas/rating/service/RatingService.java
+  - rating/src/main/java/com/yas/rating/repository/RatingRepository.java
+  - rating/src/main/resources/db/changelog/ddl
+  - rating/src/test
+  - rating/src/it
+  - backoffice/pages/reviews/index.tsx
+  - backoffice/modules/rating/models/Rating.ts
+  - backoffice/modules/rating/services/RatingService.ts
+  - storefront/modules/rating/models/Rating.ts
+constraints:
+  - Add a new Liquibase changeset; never modify an already-run changeset.
+  - Reuse the existing ADMIN authorization perimeter and existing transactional persistence Adapter.
+  - Keep shared audit Implementation unchanged; do not introduce soft deletion or mutate customer-authored content.
+  - Preserve existing Backoffice filters, latest Ratings, duplicate checks, and public endpoint shapes apart from additive Visibility.
+exclusions:
+  - Moderation reason and audit trail identifying the moderator.
+  - Customer notification and realtime Storefront updates.
+  - Removing the DELETE endpoint.
+  - New frontend test frameworks, shared audit refactoring, unrelated UI loading/search fixes, and new Modules.
+architecture_delta:
+  kind: change
+  modules_changed: [rating, rating.ui, platform.storefront]
+  modules_added: []
+  modules_removed: []
+  seams_added: []
+  note: >-
+    Keep moderation and publication predicates inside the rating Module. Extend its
+    HTTP Interface with the Visibility operation and DTO field; rating.ui gains a
+    moderation Adapter and platform.storefront's shared Rating type gains the field.
+verification_plan:
+  required_behavior:
+    - Persist VISIBLE defaults through normal construction and builders and backfill existing rows through Liquibase.
+    - Hide and unhide persist reversibly without deletion, preserve creation audit values, and skip same-state saves.
+    - Public repository queries exclude HIDDEN rows from lists, pagination, and aggregate calculations.
+    - ADMIN succeeds, authenticated USER receives 403, invalid input receives 400, and missing Rating receives 404.
+    - Staff responses include Visibility and hidden Ratings; hidden originals still block repeat submissions.
+    - Browser smoke checks exercise Hide and Unhide, Hidden badge, retained row, and Storefront next-load list/count/average.
+    - DELETE remains functional with deprecated Swagger metadata.
+  test_layers: [unit, integration, system, e2e]
+  expected_red: >-
+    Before Implementation, tests for default Visibility and its response field, the PUT
+    route and validation, hidden-row filtering and averages, and reversible updates
+    must fail against the current code. Security tests must exercise enabled filters;
+    migration tests must explicitly enable Liquibase rather than relying on existing
+    Hibernate-generated test schemas. Frontend behavior needs browser smoke checks
+    because no frontend test runner is configured.
+  commands:
+    - mvn -pl rating -am test
+    - mvn -pl rating -am verify
+    - npm --prefix backoffice run lint
+    - npm --prefix backoffice run build
+    - npm --prefix storefront run lint
+    - npm --prefix storefront run build
+  fixtures:
+    - Product with visible and hidden Ratings carrying different star scores, plus all-hidden and empty products.
+    - ADMIN and authenticated non-ADMIN JWT principals using existing realm role mapping.
+    - Existing pre-Visibility database row migrated with Liquibase, alongside normal Hibernate persistence fixtures.
+    - Customer with an eligible order and a hidden original Rating.
+  coverage: {statements: 80, branches: 80, functions: 80, lines: 80}
+  special_risks:
+    - Frontends have build and lint scripts but no automated UI test runner; browser smoke verification must be reported separately.
+    - Integration tests require Docker, PostgreSQL and Keycloak containers, and Java 25; unavailable prerequisites must be reported, not installed.
+    - Existing tests disable Liquibase and MVC unit tests disable security filters; dedicated migration and enabled-filter tests are required.
+    - Shared modification auditing conditionally handles lastModifiedBy; preserve its existing semantics rather than adding a moderator audit feature.
+    - Sealed graph counts are floors with 141 ambiguous and 13071 unresolved calls; JPA and Spring dispatch need runtime verification.
+decisions:
+  - id: D-1
+    title: Replace destructive staff action
+    decision: Replace the Backoffice row Delete button with Hide or Unhide, retaining DELETE only as a deprecated Swagger operation.
+    rationale: User accepted the recommendation; reversible moderation satisfies Legal's goal without removing the compatibility endpoint.
+  - id: D-2
+    title: Retain original submission restriction
+    decision: A hidden original Rating continues to block another Rating by the same Customer for that Product.
+    rationale: User accepted the recommendation; hiding preserves the record and must not allow moderation bypass.
+  - id: D-3
+    title: Define update and empty-result behavior
+    decision: Return 200 with updated Rating, 404 for unknown ID, 400 for missing/null/invalid Visibility, and success without saving for the same state; no visible Ratings yields 0.0 average and empty totals.
+    rationale: User accepted all recommended edge cases and existing empty-average behavior is preserved.
+  - id: D-4
+    title: Model reversible publication Visibility
+    decision: Use persisted VISIBLE and HIDDEN values, default and backfill VISIBLE, filter only public reads, and expose both states to staff.
+    rationale: YAS-104 AC-1 through AC-5 explicitly define the state and publication behavior; Visibility is not soft deletion.
+  - id: D-5
+    title: Preserve usual audit semantics
+    decision: Preserve creation fields and existing modification auditing and do not alter the shared audit listener.
+    rationale: User accepted the recommendation; YAS-104 AC-7 and exclusions do not authorize a new moderator audit trail.
+glossary:
+  - term: Rating
+    meaning: A Customer-authored product review containing content and a star score.
+  - term: Visibility
+    meaning: Reversible publication state VISIBLE or HIDDEN; HIDDEN retains the Rating but excludes it from public lists and averages.
+notes: >-
+  Standalone Mode: `wegactl context fetch YAS-104` reported Code Square unavailable.
+  Task branch was explicitly approved to start from `wega/architecture`, since its
+  architecture PR has not been merged into main. The ticket's Storefront client path
+  is inaccurate: current code uses `storefront/modules/rating/services/RatingService.ts`;
+  no client behavior change is required for next-load server filtering.

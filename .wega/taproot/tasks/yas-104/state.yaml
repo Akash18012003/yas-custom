@@ -1,0 +1,31 @@
+kind: taproot-task-state
+protocol_version: 2.0.0
+metadata:
+  id: YAS-104
+  profile: standard
+  status: active
+  created_at: "2026-10-13T08:33:10.726203+00:00"
+  updated_at: "2026-10-13T08:45:30.681073+00:00"
+gates:
+  approval: pending
+  archive: pending
+  conformance: pending
+  contract: current
+  final_review: pending
+  implementation: pending
+  red: pending
+  review: pending
+  test: pending
+artifacts:
+  contract:
+    path: contract.yaml
+    digest: sha256:abd60c6817a169d569b2184bc311d165a2b02f970edd36d0a44b40e525a58642
+    revision: 1
+    status: current
+    preparer:
+      name: Akash18012003
+      email: Akash18012003@://github.com
+  verification: []
+resume:
+  selected_stage: review
+  attempts: {}
