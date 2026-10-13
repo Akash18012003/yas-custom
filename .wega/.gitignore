@@ -1,0 +1,11 @@
+# managed by devaid — do not edit; regenerated on index
+devaid/*
+!devaid/architecture.map.json
+!devaid/architecture.observed.json
+!devaid/architecture.intended.json
+!devaid/architecture.candidates.json
+bundles/*
+!bundles/atlas.bundle.json
+!bundles/health.bundle.json
+!bundles/pre-implementation-*.bundle.json
+taproot/**/.lock
