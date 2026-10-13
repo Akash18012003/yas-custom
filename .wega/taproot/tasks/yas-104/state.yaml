@@ -5,7 +5,7 @@ metadata:
   profile: standard
   status: active
   created_at: "2026-10-13T08:33:10.726203+00:00"
-  updated_at: "2026-10-13T09:28:30.009296+00:00"
+  updated_at: "2026-10-13T09:30:45.273091+00:00"
 gates:
   approval: pending
   archive: pending
@@ -14,7 +14,7 @@ gates:
   final_review: pending
   implementation: pending
   red: pending
-  review: pending
+  review: current
   test: pending
 artifacts:
   contract:
@@ -25,7 +25,12 @@ artifacts:
     preparer:
       name: Akash18012003
       email: Akash18012003@://github.com
+  review:
+    path: review-binding.json
+    digest: sha256:33db4a07dcc06cd3193d376ee59270a2ca9d0e7459284d76e3d4b039745e5e20
+    revision: 2
+    status: current
   verification: []
 resume:
-  selected_stage: review
+  selected_stage: approval
   attempts: {}
