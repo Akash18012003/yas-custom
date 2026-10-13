@@ -5,7 +5,7 @@ metadata:
   profile: standard
   status: active
   created_at: "2026-10-13T08:33:10.726203+00:00"
-  updated_at: "2026-10-13T08:45:30.681073+00:00"
+  updated_at: "2026-10-13T09:28:30.009296+00:00"
 gates:
   approval: pending
   archive: pending
@@ -19,8 +19,8 @@ gates:
 artifacts:
   contract:
     path: contract.yaml
-    digest: sha256:abd60c6817a169d569b2184bc311d165a2b02f970edd36d0a44b40e525a58642
-    revision: 1
+    digest: sha256:12f5f3a9f7ec01f866f9c760a27d88f3dec29489873b753e285d07373d9ac547
+    revision: 2
     status: current
     preparer:
       name: Akash18012003

@@ -91,7 +91,7 @@ exclusions:
   - New frontend test frameworks, shared audit refactoring, unrelated UI loading/search fixes, and new Modules.
 architecture_delta:
   kind: change
-  modules_changed: [rating, rating.ui, platform.storefront]
+  modules_changed: [rating, rating.ui, platform.backoffice, platform.storefront]
   modules_added: []
   modules_removed: []
   seams_added: []

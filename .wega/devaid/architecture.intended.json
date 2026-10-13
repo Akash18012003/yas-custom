@@ -16,6 +16,26 @@
         }
       ],
       "source_ids": [
+        "platform.backoffice"
+      ],
+      "target_ids": [
+        "platform.backoffice"
+      ],
+      "task_id": "YAS-104"
+    },
+    {
+      "changes": {
+        "summary": "Allow staff to hide and unhide Ratings"
+      },
+      "constraints": [],
+      "operation": "change",
+      "provenance": [
+        {
+          "kind": "decision",
+          "reference": "taproot:YAS-104"
+        }
+      ],
+      "source_ids": [
         "platform.storefront"
       ],
       "target_ids": [
