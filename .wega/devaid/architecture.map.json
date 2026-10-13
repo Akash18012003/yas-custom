@@ -1,0 +1,547 @@
+{
+  "flows": [],
+  "modules": [
+    {
+      "id": "product",
+      "paths": [
+        "product"
+      ],
+      "purpose": "Manage product catalog",
+      "responsibility": ""
+    },
+    {
+      "id": "product.ui",
+      "parent": "product",
+      "paths": [
+        "backoffice/common/components/ChooseImageCommon.tsx",
+        "backoffice/common/items/ProductModal.tsx",
+        "backoffice/common/items/TextEditor.tsx",
+        "backoffice/modules/catalog/components/BrandGeneralInformation.tsx",
+        "backoffice/modules/catalog/components/CategoryImage.tsx",
+        "backoffice/modules/catalog/components/CategoryMapping.tsx",
+        "backoffice/modules/catalog/components/ChooseImages.tsx",
+        "backoffice/modules/catalog/components/ChooseThumbnail.tsx",
+        "backoffice/modules/catalog/components/CrossSellProduct.tsx",
+        "backoffice/modules/catalog/components/ExportProduct.js",
+        "backoffice/modules/catalog/components/ProductAttribute.tsx",
+        "backoffice/modules/catalog/components/ProductAttributeGroupGeneralInformation.tsx",
+        "backoffice/modules/catalog/components/ProductGeneralInformation.tsx",
+        "backoffice/modules/catalog/components/ProductImage.tsx",
+        "backoffice/modules/catalog/components/ProductOptionGeneralInformation.tsx",
+        "backoffice/modules/catalog/components/ProductSEO.tsx",
+        "backoffice/modules/catalog/components/RelatedProduct.tsx",
+        "backoffice/modules/catalog/models/ProductPayload.ts",
+        "backoffice/modules/catalog/services/BrandService.ts",
+        "backoffice/modules/catalog/services/CategoryService.ts",
+        "backoffice/modules/catalog/services/MediaService.ts",
+        "backoffice/modules/catalog/services/ProductAttributeGroupService.ts",
+        "backoffice/modules/catalog/services/ProductAttributeService.ts",
+        "backoffice/modules/catalog/services/ProductAttributeValueService.ts",
+        "backoffice/modules/catalog/services/ProductOptionService.ts",
+        "backoffice/modules/catalog/services/ProductTemplateService.ts",
+        "backoffice/pages/catalog",
+        "storefront/common/components/ProductImageGallery.tsx",
+        "storefront/common/components/SimilarProductCard.tsx",
+        "storefront/modules/catalog/components/DetailHeader.tsx",
+        "storefront/modules/catalog/components/ProductDetails.tsx",
+        "storefront/modules/catalog/components/RelatedProducts.tsx",
+        "storefront/modules/catalog/components/SimilarProducts.tsx",
+        "storefront/modules/home/components/Banner.tsx",
+        "storefront/modules/home/components/Category.tsx",
+        "storefront/modules/home/components/FeaturedProduct.tsx",
+        "storefront/modules/rating/components/PostRatingForm.tsx",
+        "storefront/modules/rating/components/RatingList.tsx",
+        "storefront/modules/rating/components/Star.tsx",
+        "storefront/modules/rating/services",
+        "storefront/pages/404.tsx",
+        "storefront/pages/index.tsx",
+        "storefront/pages/products",
+        "storefront/pages/redirect",
+        "storefront/utils/concatQueryString.ts"
+      ],
+      "purpose": "Product catalog pages",
+      "responsibility": ""
+    },
+    {
+      "id": "cart",
+      "paths": [
+        "cart"
+      ],
+      "purpose": "Manage shopping cart",
+      "responsibility": ""
+    },
+    {
+      "id": "cart.ui",
+      "parent": "cart",
+      "paths": [
+        "storefront/common/components/dialog",
+        "storefront/context/UserInfoContext.tsx",
+        "storefront/modules/cart/components",
+        "storefront/modules/promotion/service",
+        "storefront/pages/cart"
+      ],
+      "purpose": "Shopping cart pages",
+      "responsibility": ""
+    },
+    {
+      "id": "customer",
+      "paths": [
+        "customer"
+      ],
+      "purpose": "Manage customers and profiles",
+      "responsibility": ""
+    },
+    {
+      "id": "customer.ui",
+      "parent": "customer",
+      "paths": [
+        "backoffice/modules/customer/components",
+        "backoffice/pages/customers",
+        "backoffice/pages/profile",
+        "storefront/modules/address/components/AddressCard.tsx",
+        "storefront/modules/order/components/CheckOutAddress.tsx",
+        "storefront/modules/order/components/CheckOutDetail.tsx",
+        "storefront/modules/order/components/ModalAddressList.tsx",
+        "storefront/modules/payment/services",
+        "storefront/pages/checkout",
+        "storefront/pages/profile"
+      ],
+      "purpose": "Customer profile and checkout pages",
+      "responsibility": ""
+    },
+    {
+      "id": "delivery",
+      "paths": [
+        "delivery"
+      ],
+      "purpose": "Delivery application",
+      "responsibility": ""
+    },
+    {
+      "id": "inventory",
+      "paths": [
+        "inventory"
+      ],
+      "purpose": "Manage warehouses and stock",
+      "responsibility": ""
+    },
+    {
+      "id": "inventory.ui",
+      "parent": "inventory",
+      "paths": [
+        "backoffice/modules/inventory/components",
+        "backoffice/modules/inventory/services",
+        "backoffice/modules/location/services/DistrictService.tsx",
+        "backoffice/pages/inventory"
+      ],
+      "purpose": "Warehouse and stock pages",
+      "responsibility": ""
+    },
+    {
+      "id": "location",
+      "paths": [
+        "location"
+      ],
+      "purpose": "Manage countries and addresses",
+      "responsibility": ""
+    },
+    {
+      "id": "location.ui",
+      "parent": "location",
+      "paths": [
+        "backoffice/modules/location/components",
+        "backoffice/pages/location",
+        "storefront/common/items/ModalChooseDefaultAddress.tsx",
+        "storefront/common/items/ModalDeleteCustom.tsx",
+        "storefront/pages/address"
+      ],
+      "purpose": "Country and address pages",
+      "responsibility": ""
+    },
+    {
+      "id": "media",
+      "paths": [
+        "media"
+      ],
+      "purpose": "Store and retrieve media",
+      "responsibility": ""
+    },
+    {
+      "id": "media.ui",
+      "parent": "media",
+      "paths": [
+        "backoffice/modules/home/components/LatestItemPanel.tsx",
+        "backoffice/modules/home/components/LatestOrders.tsx",
+        "backoffice/modules/home/components/LatestProducts.tsx",
+        "backoffice/modules/home/components/LatestRatings.tsx",
+        "backoffice/pages/index.tsx"
+      ],
+      "purpose": "Administration home page",
+      "responsibility": ""
+    },
+    {
+      "id": "order",
+      "paths": [
+        "order"
+      ],
+      "purpose": "Manage orders and checkout",
+      "responsibility": ""
+    },
+    {
+      "id": "order.ui",
+      "parent": "order",
+      "paths": [
+        "backoffice/modules/order/components",
+        "backoffice/pages/sales",
+        "backoffice/utils/formatPrice.ts",
+        "storefront/modules/order/components/OrderCard.tsx",
+        "storefront/modules/order/components/OrderStatusTab.tsx",
+        "storefront/pages/my-orders",
+        "storefront/utils/orderUtil.ts"
+      ],
+      "purpose": "Sales and customer order pages",
+      "responsibility": ""
+    },
+    {
+      "id": "payment",
+      "paths": [
+        "payment",
+        "payment-paypal/src"
+      ],
+      "purpose": "Manage payment providers and transactions",
+      "responsibility": ""
+    },
+    {
+      "id": "payment.ui",
+      "parent": "payment",
+      "paths": [
+        "backoffice/pages/system",
+        "storefront/pages/complete-payment"
+      ],
+      "purpose": "Payment completion and provider pages",
+      "responsibility": ""
+    },
+    {
+      "id": "promotion",
+      "paths": [
+        "promotion"
+      ],
+      "purpose": "Manage promotions",
+      "responsibility": ""
+    },
+    {
+      "id": "promotion.ui",
+      "parent": "promotion",
+      "paths": [
+        "backoffice/modules/promotion/components",
+        "backoffice/modules/promotion/services",
+        "backoffice/pages/promotion"
+      ],
+      "purpose": "Promotion management pages",
+      "responsibility": ""
+    },
+    {
+      "id": "rating",
+      "paths": [
+        "rating"
+      ],
+      "purpose": "Manage product ratings",
+      "responsibility": ""
+    },
+    {
+      "id": "rating.ui",
+      "parent": "rating",
+      "paths": [
+        "backoffice/modules/rating/components",
+        "backoffice/pages/reviews"
+      ],
+      "purpose": "Product review pages",
+      "responsibility": ""
+    },
+    {
+      "id": "recommendation",
+      "paths": [
+        "recommendation"
+      ],
+      "purpose": "Find similar products",
+      "responsibility": ""
+    },
+    {
+      "id": "search",
+      "paths": [
+        "search"
+      ],
+      "purpose": "Search products with Elasticsearch",
+      "responsibility": ""
+    },
+    {
+      "id": "search.ui",
+      "parent": "search",
+      "paths": [
+        "storefront/modules/search/components",
+        "storefront/pages/search"
+      ],
+      "purpose": "Product search pages",
+      "responsibility": ""
+    },
+    {
+      "id": "tax",
+      "paths": [
+        "tax"
+      ],
+      "purpose": "Manage tax classes and rates",
+      "responsibility": ""
+    },
+    {
+      "id": "tax.ui",
+      "parent": "tax",
+      "paths": [
+        "backoffice/modules/tax/components",
+        "backoffice/modules/tax/services/TaxRateService.ts",
+        "backoffice/pages/tax"
+      ],
+      "purpose": "Tax management pages",
+      "responsibility": ""
+    },
+    {
+      "id": "webhook",
+      "paths": [
+        "webhook"
+      ],
+      "purpose": "Manage webhook subscriptions",
+      "responsibility": ""
+    },
+    {
+      "id": "webhook.ui",
+      "parent": "webhook",
+      "paths": [
+        "backoffice/modules/webhook/components",
+        "backoffice/modules/webhook/services",
+        "backoffice/pages/webhook"
+      ],
+      "purpose": "Webhook management pages",
+      "responsibility": ""
+    },
+    {
+      "id": "backoffice-bff",
+      "paths": [
+        "backoffice-bff"
+      ],
+      "purpose": "Authenticate and proxy administration requests",
+      "responsibility": ""
+    },
+    {
+      "id": "storefront-bff",
+      "paths": [
+        "storefront-bff"
+      ],
+      "purpose": "Authenticate and proxy shopping requests",
+      "responsibility": ""
+    },
+    {
+      "id": "about",
+      "paths": [
+        "storefront/pages/about"
+      ],
+      "purpose": "Present shop information",
+      "responsibility": ""
+    },
+    {
+      "id": "contact",
+      "paths": [
+        "storefront/pages/contact"
+      ],
+      "purpose": "Present contact information",
+      "responsibility": ""
+    },
+    {
+      "id": "history",
+      "paths": [
+        "storefront/pages/history"
+      ],
+      "purpose": "Present history page",
+      "responsibility": ""
+    },
+    {
+      "id": "platform",
+      "paths": [],
+      "purpose": "Platform",
+      "responsibility": "Shared Modules many Capabilities use"
+    },
+    {
+      "id": "platform.common-library",
+      "parent": "platform",
+      "paths": [
+        "common-library"
+      ],
+      "purpose": "",
+      "responsibility": ""
+    },
+    {
+      "id": "platform.backoffice",
+      "parent": "platform",
+      "paths": [
+        "backoffice/.eslintrc.json",
+        "backoffice/Dockerfile",
+        "backoffice/README.md",
+        "backoffice/asset",
+        "backoffice/common/components/AuthenticationInfo.tsx",
+        "backoffice/common/components/ConfirmationDialog.tsx",
+        "backoffice/common/components/Layout.tsx",
+        "backoffice/common/items/Filter.tsx",
+        "backoffice/common/items/Input.tsx",
+        "backoffice/common/items/ListGroup.tsx",
+        "backoffice/common/items/ModalDeleteCustom.tsx",
+        "backoffice/common/items/OptionSelect.tsx",
+        "backoffice/common/services",
+        "backoffice/constants",
+        "backoffice/modules/catalog/components/CustomOptionInput.tsx",
+        "backoffice/modules/catalog/components/DisplayTypeModal.tsx",
+        "backoffice/modules/catalog/components/ProductVariant.tsx",
+        "backoffice/modules/catalog/components/ProductVariation.tsx",
+        "backoffice/modules/catalog/components/index.ts",
+        "backoffice/modules/catalog/constants",
+        "backoffice/modules/catalog/models/Brand.ts",
+        "backoffice/modules/catalog/models/Category.ts",
+        "backoffice/modules/catalog/models/Filter.ts",
+        "backoffice/modules/catalog/models/FormProduct.ts",
+        "backoffice/modules/catalog/models/FormProductTemplate.ts",
+        "backoffice/modules/catalog/models/Media.ts",
+        "backoffice/modules/catalog/models/Product.ts",
+        "backoffice/modules/catalog/models/ProductAttribute.ts",
+        "backoffice/modules/catalog/models/ProductAttributeGroup.ts",
+        "backoffice/modules/catalog/models/ProductAttributeValue.ts",
+        "backoffice/modules/catalog/models/ProductAttributeValuePost.ts",
+        "backoffice/modules/catalog/models/ProductImage.ts",
+        "backoffice/modules/catalog/models/ProductOption.ts",
+        "backoffice/modules/catalog/models/ProductOptionValuePost.ts",
+        "backoffice/modules/catalog/models/ProductTemplate.ts",
+        "backoffice/modules/catalog/models/ProductThumbnail.ts",
+        "backoffice/modules/catalog/models/ProductThumbnails.ts",
+        "backoffice/modules/catalog/models/ProductVariation.ts",
+        "backoffice/modules/catalog/models/ProductVariationPost.ts",
+        "backoffice/modules/catalog/models/ProductVariationPut.ts",
+        "backoffice/modules/catalog/models/Products.ts",
+        "backoffice/modules/catalog/services/ProductService.ts",
+        "backoffice/modules/customer/models",
+        "backoffice/modules/customer/services",
+        "backoffice/modules/home/components/index.ts",
+        "backoffice/modules/inventory/models",
+        "backoffice/modules/location/models",
+        "backoffice/modules/location/services/CountryService.ts",
+        "backoffice/modules/location/services/StateOrProvinceService.ts",
+        "backoffice/modules/order/models",
+        "backoffice/modules/order/services",
+        "backoffice/modules/payment",
+        "backoffice/modules/profile",
+        "backoffice/modules/promotion/models",
+        "backoffice/modules/rating/models",
+        "backoffice/modules/rating/services",
+        "backoffice/modules/tax/models",
+        "backoffice/modules/tax/services/TaxClassService.ts",
+        "backoffice/modules/webhook/models",
+        "backoffice/next-env.d.ts",
+        "backoffice/next.config.js",
+        "backoffice/package.json",
+        "backoffice/pages/_app.tsx",
+        "backoffice/pages/_document.tsx",
+        "backoffice/tsconfig.json",
+        "backoffice/utils/concatQueryString.ts"
+      ],
+      "purpose": "",
+      "responsibility": ""
+    },
+    {
+      "id": "platform.storefront",
+      "parent": "platform",
+      "paths": [
+        "storefront/.eslintrc.json",
+        "storefront/Dockerfile",
+        "storefront/README.md",
+        "storefront/asset",
+        "storefront/common/components/AuthenticationInfo.tsx",
+        "storefront/common/components/BreadcrumbComponent.tsx",
+        "storefront/common/components/ImageWithFallback.tsx",
+        "storefront/common/components/Layout.tsx",
+        "storefront/common/components/ProductCard.tsx",
+        "storefront/common/components/ProductCardBase.tsx",
+        "storefront/common/components/ProfileLayout.tsx",
+        "storefront/common/components/SpinnerComponent.tsx",
+        "storefront/common/components/UserProfileLeftSideBar.tsx",
+        "storefront/common/components/common",
+        "storefront/common/constants",
+        "storefront/common/items/Banner.tsx",
+        "storefront/common/items/Input.tsx",
+        "storefront/common/items/OptionSelect.tsx",
+        "storefront/common/items/ProductItems.tsx",
+        "storefront/common/services",
+        "storefront/context/AppContext.tsx",
+        "storefront/context/CartContext.tsx",
+        "storefront/modules/address/components/AddressForm.tsx",
+        "storefront/modules/address/models",
+        "storefront/modules/address/services",
+        "storefront/modules/breadcrumb",
+        "storefront/modules/cart/models",
+        "storefront/modules/cart/services",
+        "storefront/modules/catalog/components/index.ts",
+        "storefront/modules/catalog/models",
+        "storefront/modules/catalog/services",
+        "storefront/modules/country",
+        "storefront/modules/customer",
+        "storefront/modules/district",
+        "storefront/modules/home/components/index.ts",
+        "storefront/modules/media",
+        "storefront/modules/order/models",
+        "storefront/modules/order/services",
+        "storefront/modules/payment/models",
+        "storefront/modules/paymentPaypal",
+        "storefront/modules/profile",
+        "storefront/modules/promotion/model",
+        "storefront/modules/rating/components/index.tsx",
+        "storefront/modules/rating/models",
+        "storefront/modules/sampledata",
+        "storefront/modules/search/models",
+        "storefront/modules/search/services",
+        "storefront/modules/stateAndProvince",
+        "storefront/next-env.d.ts",
+        "storefront/next.config.js",
+        "storefront/package.json",
+        "storefront/pages/_app.tsx",
+        "storefront/tsconfig.json",
+        "storefront/utils/formatPrice.ts",
+        "storefront/utils/useDebounce.ts"
+      ],
+      "purpose": "",
+      "responsibility": ""
+    },
+    {
+      "id": "operations",
+      "paths": [
+        ".github",
+        "README.md",
+        "automation-ui",
+        "checkstyle",
+        "docker",
+        "docker-compose.o11y.yml",
+        "docker-compose.search.yml",
+        "docker-compose.yml",
+        "docs",
+        "gitleaks.toml",
+        "identity",
+        "k8s",
+        "payment-paypal/Dockerfile",
+        "payment-paypal/pom.xml",
+        "pom.xml",
+        "sampledata",
+        "scripts",
+        "start-source-connectors.sh",
+        "start-yas.sh",
+        "workflows.sh",
+        "yaslocal.yaml"
+      ],
+      "purpose": "Operations",
+      "responsibility": "Builds, delivers and documents the Codebase; nothing in it runs as part of a Capability"
+    }
+  ],
+  "schema_version": 1
+}

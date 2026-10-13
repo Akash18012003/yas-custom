@@ -1,0 +1,66 @@
+flow: hotfix
+description: "Urgent Change Contract review, approval, implementation, verification, and archive."
+
+stages:
+  contract:
+    module: contract
+    produces: [contract]
+    contract_rules:
+      architecture_delta: none
+      required_fields:
+        - incident
+        - reproducer
+        - blast_radius
+        - rollback
+        - security_data_risk
+  review:
+    module: review
+    requires:
+      - artifact: contract
+        status: current
+    produces: [review]
+  approval:
+    module: approval
+    requires:
+      - artifact: review
+        status: current
+    produces: [approval]
+  red:
+    module: verification
+    requires:
+      - artifact: approval
+        status: current
+    produces: [verification:red]
+    gate:
+      type: approval
+      message: "The current contract revision must have an approval receipt."
+  implementation:
+    module: verification
+    requires:
+      - artifact: verification:red
+        status: passed
+    produces: [verification:implementation]
+  test:
+    module: verification
+    requires:
+      - artifact: verification:implementation
+        status: passed
+    produces: [verification:test]
+  final_review:
+    module: verification
+    requires:
+      - artifact: verification:test
+        status: passed
+    produces: [verification:review]
+  conformance:
+    module: verification
+    requires:
+      - artifact: verification:review
+        status: passed
+    produces: [verification:conformance]
+  archive:
+    module: archive
+    requires:
+      - artifact: verification:conformance
+        status: passed
+    produces: [archive]
