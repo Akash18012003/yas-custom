@@ -1,0 +1,49 @@
+{
+  "approved_at": "2026-10-13T09:37:40Z",
+  "approved_by": {
+    "email": "Akash18012003@://github.com",
+    "name": "Akash18012003"
+  },
+  "approved_surface": [
+    "backoffice/modules/rating/models/Rating.ts",
+    "backoffice/modules/rating/services/RatingService.ts",
+    "backoffice/pages/reviews/index.tsx",
+    "rating/src/it",
+    "rating/src/main/java/com/yas/rating/controller/RatingController.java",
+    "rating/src/main/java/com/yas/rating/model",
+    "rating/src/main/java/com/yas/rating/repository/RatingRepository.java",
+    "rating/src/main/java/com/yas/rating/service/RatingService.java",
+    "rating/src/main/java/com/yas/rating/viewmodel",
+    "rating/src/main/resources/db/changelog/ddl",
+    "rating/src/test",
+    "storefront/modules/rating/models/Rating.ts"
+  ],
+  "architecture_hashes": {
+    "intended": "sha256:89b7d576e324c76b91486bb6c1acc4b51ac825ac1a9cc530699e4f3de7fd082c",
+    "observed": "sha256:51b066ef9e26a6121d111b268c2bb4c9cf30cda08742cc65045d2d47e453028b"
+  },
+  "authority": "repository",
+  "bundle_digest": "sha256:3cb62008ed2fde8c0db85ad161f81d9b6afba95f662506ec3031bf4001c584ca",
+  "bundle_path": ".wega/bundles/pre-implementation-YAS-104.bundle.json",
+  "contract_digest": "sha256:12f5f3a9f7ec01f866f9c760a27d88f3dec29489873b753e285d07373d9ac547",
+  "contract_revision": 2,
+  "decision": "approved",
+  "graph_generation": "782a7818d887ed091b09948696c6a53ff7d01ee347542d018556d03bb456ade5",
+  "graph_schema_version": 2,
+  "human_confirmation": true,
+  "profile": "standard",
+  "repository": "Akash18012003/yas-custom",
+  "review_digest": "sha256:33db4a07dcc06cd3193d376ee59270a2ca9d0e7459284d76e3d4b039745e5e20",
+  "reviewed_commit": "f1319a527e5ad79128da753d3e5e5dab6e80737f",
+  "reviewer": {
+    "email": "Akash18012003@://github.com",
+    "name": "Akash18012003"
+  },
+  "self_approval_override": {
+    "confirmed": true,
+    "reason": "I am testing the solution and I am the only available approver and I accept the plan as my own."
+  },
+  "source_branch": "wega/YAS-104",
+  "source_commit": "179e813568c345bad3fce985088b5535e57481aa",
+  "task_id": "YAS-104"
+}
