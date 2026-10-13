@@ -537,7 +537,8 @@
         "start-source-connectors.sh",
         "start-yas.sh",
         "workflows.sh",
-        "yaslocal.yaml"
+        "yaslocal.yaml",
+        "kafka"
       ],
       "purpose": "Operations",
       "responsibility": "Builds, delivers and documents the Codebase; nothing in it runs as part of a Capability"

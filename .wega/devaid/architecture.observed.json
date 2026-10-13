@@ -19119,6 +19119,16 @@
         {
           "confidence": 1.0,
           "provenance_kind": "graph",
+          "source_file": "kafka/connects/debezium-order.json"
+        },
+        {
+          "confidence": 1.0,
+          "provenance_kind": "graph",
+          "source_file": "kafka/connects/debezium-product.json"
+        },
+        {
+          "confidence": 1.0,
+          "provenance_kind": "graph",
           "source_file": "payment-paypal/Dockerfile"
         },
         {
@@ -24282,30 +24292,5 @@
   "sealed_generation": "782a7818d887ed091b09948696c6a53ff7d01ee347542d018556d03bb456ade5",
   "seams": [],
   "source_commit": "179e813568c345bad3fce985088b5535e57481aa",
-  "unresolved_claims": [
-    {
-      "evidence": [
-        {
-          "confidence": 1.0,
-          "provenance_kind": "graph",
-          "source_file": "kafka/connects/debezium-order.json"
-        }
-      ],
-      "id": "claim:file:kafka/connects/debezium-order.json",
-      "reason": "no Module Map entry claims this file",
-      "subject": "file:kafka/connects/debezium-order.json"
-    },
-    {
-      "evidence": [
-        {
-          "confidence": 1.0,
-          "provenance_kind": "graph",
-          "source_file": "kafka/connects/debezium-product.json"
-        }
-      ],
-      "id": "claim:file:kafka/connects/debezium-product.json",
-      "reason": "no Module Map entry claims this file",
-      "subject": "file:kafka/connects/debezium-product.json"
-    }
-  ]
+  "unresolved_claims": []
 }
